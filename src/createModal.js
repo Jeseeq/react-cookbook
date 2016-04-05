@@ -6,6 +6,7 @@ const CreateModal = React.createClass({
    onAdd: function(){
      var title = this.refs.cTitle.value;
      var ingredients = this.refs.cIngredients.value.split(',');
+
      this.props.data.push({
        title: title,
        ingredients: ingredients

@@ -8,6 +8,18 @@ import ReactDOM from 'react-dom';
 
 
 var App = React.createClass({
+
+  onDelete: function (item) {
+  let data = this.state.data.filter(function (elem) {
+    return elem !== item;
+  });
+
+  console.log(this);
+  console.log(item);
+    this.setState({
+      data: data
+    });
+  },
   getInitialState(){
     return {
       modalShow: false,
@@ -23,7 +35,7 @@ var App = React.createClass({
     return (
       <div className='container'>
         <div className='well'>
-          <RecipeList data = {this.state.data}/>
+          <RecipeList onDelete = {this.onDelete} data = {this.state.data}/>
         </div>
         <button className='btn btn-lg btn-primary' onClick={()=>this.setState({modalShow: true})}>Create</button>
         <CreateModal data={this.state.data} show={this.state.modalShow} onHide={cmHide}/>

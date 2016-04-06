@@ -1,3 +1,5 @@
-# react-hot-reload
+# react-cookbook
 
-Boilerplate for future project using react
+Freecodecamp.com project
+cooking recipe book  
+

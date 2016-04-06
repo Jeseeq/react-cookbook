@@ -13,7 +13,6 @@ var RecipeContainer = React.createClass({
       data: this.props.data
     };
   },
-
   onSave: function (newItem, i) {
     let index = this.state.data.indexOf(i);
     let data = this.state.data;
@@ -28,6 +27,7 @@ var RecipeContainer = React.createClass({
     this.setState({data: data});
 
 },
+  //Add recipe handler
   onAdd: function (item) {
     this.state.data.push(item);
 
@@ -36,6 +36,7 @@ var RecipeContainer = React.createClass({
   render: function (){
     //get call every time state changes
     writeLocal(this.state.data);
+    
     let cmHide = () => this.setState({modalShow: false})
     return(<div>
       <div className="well">

@@ -14,9 +14,7 @@ var App = React.createClass({
   render: function () {
     return (
       <div className='container'>
-
         <RecipeContainer data = {data}/>
-
       </div>
     );
   }

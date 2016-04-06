@@ -2,19 +2,18 @@ import React from 'react'
 import {Modal, Button} from 'react-bootstrap'
 
 const CreateModal = React.createClass({
-
+  //Todo: refactor
    onAdd: function(){
      var title = this.refs.cTitle.value;
      var ingredients = this.refs.cIngredients.value.split(',');
-
-     this.props.data.push({
-       title: title,
-       ingredients: ingredients
-     });
+     this.props.onAdd({title: title, ingredients: ingredients});
      this.props.onHide();
   },
+
   getInitialState: function () {
-    return {modalShow: false};
+    return {
+      modalShow: false
+    };
   },
   render: function(){
 
@@ -28,9 +27,12 @@ const CreateModal = React.createClass({
             <form>
               <div className="form-group">
                 <label for="recipeName">Recipe Name</label>
-                <input ref = 'cTitle' type="text" className="form-control" id="recipeName" placeholder="Enter recipe name"></input>
+                <input ref = 'cTitle' type="text" className="form-control" id="recipeName"  placeholder= 'Enter recipe name'>
+                </input>
                 <label for="Ingredients">Ingredients</label>
-                <input ref="cIngredients" type="text" className="form-control" id="Ingredients" placeholder="Enter ingredients separated by ,"></input>
+                <input ref="cIngredients" type="text" className="form-control" id="Ingredients" placeholder='Enter ingredients separated by ,'>
+
+                </input>
               </div>
             </form>
           </Modal.Body>

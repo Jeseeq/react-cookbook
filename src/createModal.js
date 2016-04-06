@@ -4,19 +4,16 @@ import {Modal, Button} from 'react-bootstrap'
 const CreateModal = React.createClass({
   //Todo: refactor
    onAdd: function(){
-     var title = this.refs.cTitle.value;
-     var ingredients = this.refs.cIngredients.value.split(',');
+     var title = this.refs.cTitle.value || 'untitled';
+     var ingredients = this.refs.cIngredients.value.split(',') || '';
      this.props.onAdd({title: title, ingredients: ingredients});
      this.props.onHide();
   },
 
   getInitialState: function () {
-    return {
-      modalShow: false
-    };
+    return {modalShow: false};
   },
   render: function(){
-
     return (
       <div>
         <Modal {...this.props}>

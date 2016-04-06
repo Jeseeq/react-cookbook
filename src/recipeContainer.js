@@ -2,10 +2,11 @@ import React from 'react';
 import CreateModal from './createModal';
 import RecipeList from './recipeList';
 
+var writeLocal = function (data) {
+  localStorage.setItem('recipeBook', JSON.stringify(data));
+}
 var RecipeContainer = React.createClass({
-  WriteLocal: function () {
-    localStorage.setItem('recipeBook', JSON.stringify(this.state.data));
-  },
+
   getInitialState: function () {
     return {
       modalShow: false,
@@ -18,7 +19,6 @@ var RecipeContainer = React.createClass({
     let data = this.state.data;
     data[index] = newItem;
     this.setState({data: data });
-    this.WriteLocal();
   },
   //Delete item handler
   onDelete: function (item) {
@@ -26,16 +26,16 @@ var RecipeContainer = React.createClass({
       return elem !== item;
     });
     this.setState({data: data});
-    this.WriteLocal();
 
 },
   onAdd: function (item) {
     this.state.data.push(item);
-    this.WriteLocal();
 
   },
 
   render: function (){
+    //get call every time state changes
+    writeLocal(this.state.data);
     let cmHide = () => this.setState({modalShow: false})
     return(<div>
       <div className="well">
